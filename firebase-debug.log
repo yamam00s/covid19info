@@ -1,0 +1,86 @@
+[debug] [2020-04-30T00:23:29.655Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T00:23:29.656Z] Command:       /Users/s.yamamo/.anyenv/envs/nodenv/versions/12.13.1/bin/node /Users/s.yamamo/.anyenv/envs/nodenv/versions/12.13.1/bin/firebase init
+[debug] [2020-04-30T00:23:29.656Z] CLI Version:   8.0.3
+[debug] [2020-04-30T00:23:29.656Z] Platform:      darwin
+[debug] [2020-04-30T00:23:29.656Z] Node Version:  v12.13.1
+[debug] [2020-04-30T00:23:29.657Z] Time:          Thu Apr 30 2020 09:23:29 GMT+0900 (GMT+09:00)
+[debug] [2020-04-30T00:23:29.657Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T00:23:29.657Z] 
+[debug] [2020-04-30T00:23:29.665Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T00:23:29.665Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/s.yamamo/myProjects/covid19info
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2020-04-30T00:23:33.332Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2020-04-30T00:23:34.150Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  Using project covid19info-574cd (covid19info)
+[info] 
+=== Firestore Setup
+[debug] [2020-04-30T00:23:35.076Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T00:23:35.076Z] > authorizing via signed-in user
+[debug] [2020-04-30T00:23:35.077Z] [iam] checking project covid19info-574cd for permissions ["firebase.projects.get"]
+[debug] [2020-04-30T00:23:35.077Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/covid19info-574cd:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-04-30T00:23:35.841Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=658","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2020-04-30T00:23:38.044Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/covid19info-574cd/releases?pageSize=10&pageToken=  
+ 
+[debug] [2020-04-30T00:23:39.275Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:23:39.277Z] Found ruleset: projects/covid19info-574cd/rulesets/902c2e16-bcdb-41e6-9dc1-50df5040fa66
+[debug] [2020-04-30T00:23:39.277Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/covid19info-574cd/rulesets/902c2e16-bcdb-41e6-9dc1-50df5040fa66  
+ 
+[debug] [2020-04-30T00:23:39.525Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2020-04-30T00:23:40.563Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/covid19info-574cd/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2020-04-30T00:23:40.563Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/covid19info-574cd/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2020-04-30T00:23:40.879Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:23:41.106Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:41 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2020-04-30T00:23:41.109Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T00:23:41.110Z] > authorizing via signed-in user
+[debug] [2020-04-30T00:23:41.110Z] [iam] checking project covid19info-574cd for permissions ["firebase.projects.get"]
+[debug] [2020-04-30T00:23:41.110Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/covid19info-574cd:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-04-30T00:23:41.820Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:41 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=683","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:23:41.821Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/covid19info-574cd/services/cloudfunctions.googleapis.com:enable  
+ 
+[debug] [2020-04-30T00:23:41.822Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/covid19info-574cd/services/runtimeconfig.googleapis.com:enable  
+ 
+[debug] [2020-04-30T00:23:42.864Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:42 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:23:42.912Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:23:42 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  Wrote functions/package.json
+[info] ✔  Wrote functions/tsconfig.json
+[info] ✔  Wrote functions/src/index.ts
+[info] ✔  Wrote functions/.gitignore
