@@ -1,6 +1,7 @@
 import { firestore } from 'firebase/app';
 
 export type Region = {
+  id: number
   name: string
   todayInfection: number
   totalInfection: number
@@ -10,6 +11,7 @@ export type Region = {
 }
 
 export const blankRegion: Region = {
+  id: 0,
   name: '',
   todayInfection: 0,
   totalInfection: 0,

@@ -1,5 +1,5 @@
 import { Page } from 'playwright'
-import { Region, blankRegion } from 'services/models/region'
+import { Region, blankRegion } from '../services/models/region'
 
 const feedHazard = async (page: Page) => {
     const url: string = 'https://hazard.yahoo.co.jp/article/20200207'
@@ -8,14 +8,17 @@ const feedHazard = async (page: Page) => {
     const items = await page.$$(mapSel)
     let feedData: Region[] = []
 
-    for await (const item of items) {
+    for await (const [index, item] of items.entries()) {
       const regionName = await item.$eval('dt', el => el.textContent)
       const todayValue = await item.$eval('dd', el => el.textContent)
-      if (regionName && todayValue) {
+
+      if (regionName && todayValue && index !== 0) {
+        const todayNumber = parseInt(todayValue, 10) || 0
         feedData.push({
           ...blankRegion,
+          id: index,
           name: regionName,
-          todayInfection: parseInt(todayValue, 10)
+          todayInfection: todayNumber
         })
       }
     }
