@@ -2,6 +2,7 @@ import { firestore } from 'firebase/app';
 
 export type Hazard = {
   id: number
+  key: string
   region: string
   todayInfection: number
   totalInfection: number
@@ -12,6 +13,7 @@ export type Hazard = {
 
 export const blankHazard: Hazard = {
   id: 0,
+  key: '',
   region: '',
   todayInfection: 0,
   totalInfection: 0,
