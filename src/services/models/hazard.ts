@@ -1,8 +1,8 @@
 import { firestore } from 'firebase/app';
 
-export type Region = {
+export type Hazard = {
   id: number
-  name: string
+  region: string
   todayInfection: number
   totalInfection: number
   comparisonInfection: number
@@ -10,9 +10,9 @@ export type Region = {
   createdAt: firestore.Timestamp | null;
 }
 
-export const blankRegion: Region = {
+export const blankHazard: Hazard = {
   id: 0,
-  name: '',
+  region: '',
   todayInfection: 0,
   totalInfection: 0,
   comparisonInfection: 0,

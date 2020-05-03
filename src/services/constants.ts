@@ -1,3 +1,3 @@
 export const collectionName = {
-  region: 'region'
+  hazard: 'hazard'
 } as const

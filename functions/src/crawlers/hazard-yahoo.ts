@@ -1,5 +1,5 @@
 import { chromium } from 'playwright'
-import { Region, blankRegion } from '../services/models/region'
+import { Hazard, blankHazard } from '../services/models/hazard'
 
 const feedHazard = async () => {
   const browser = await chromium.launch()
@@ -9,7 +9,7 @@ const feedHazard = async () => {
   await page.goto(url)
   const mapSel = '#map .table .table__section div'
   const items = await page.$$(mapSel)
-  let feedData: Region[] = []
+  let feedData: Hazard[] = []
 
   for await (const [index, item] of items.entries()) {
     const regionName = await item.$eval('dt', el => el.textContent)
@@ -18,9 +18,9 @@ const feedHazard = async () => {
     if (regionName && todayValue && index !== 0) {
       const todayNumber = parseInt(todayValue, 10) || 0
       feedData.push({
-        ...blankRegion,
+        ...blankHazard,
         id: index,
-        name: regionName,
+        region: regionName,
         todayInfection: todayNumber
       })
     }
