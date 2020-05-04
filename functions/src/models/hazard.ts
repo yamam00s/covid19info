@@ -13,12 +13,12 @@ const saveHazard = async (
     if (hazardDoc.exists) {
       hazardDoc.ref.set({
         ...hazard,
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
         updateAt: admin.firestore.FieldValue.serverTimestamp()
       })
     } else {
       hazardDoc.ref.set({
         ...hazard,
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
         updateAt: admin.firestore.FieldValue.serverTimestamp()
       })
     }
