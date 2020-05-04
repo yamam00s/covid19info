@@ -39,9 +39,7 @@ const feedHazard = async () => {
 
   await browser.close()
 
-  console.log(feedData)
   return feedData
 }
 
-feedHazard()
 export default feedHazard
