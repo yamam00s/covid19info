@@ -12,8 +12,7 @@
     "rootDir": "src",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
-    "baseUrl": "src",
+    "target": "es2017"
   },
   "compileOnSave": true,
   "include": [
