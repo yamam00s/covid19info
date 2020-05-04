@@ -16,5 +16,6 @@ export const fetchHazard = functions
   .onRun(async () => {
     const db = admin.firestore()
     const feedData = await feedHazard()
+    if (!feedData.length) throw new Error('feed error');
     await saveHazard(db, feedData)
   })
