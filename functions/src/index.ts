@@ -19,3 +19,19 @@ export const fetchHazard = functions
     if (!feedData.length) throw new Error('feed error');
     await saveHazard(db, feedData)
   })
+
+// local node.js環境での実行用
+// import serviceAccount from './covid19info-firebase-adminsdk.json'
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+//   databaseURL: "https://covid19info-574cd.firebaseio.com"
+// });
+
+// const localTest = async () => {
+//   const db = admin.firestore()
+//   const feedData = await feedHazard()
+//   await saveHazard(db, feedData)
+// }
+
+// localTest()
