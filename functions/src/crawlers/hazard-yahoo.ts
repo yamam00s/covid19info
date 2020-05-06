@@ -22,12 +22,13 @@ const feedHazard = async () => {
     const page = await browser.newPage()
     const url: string = 'https://hazard.yahoo.co.jp/article'
     await page.goto(`${url}/20200207`)
-    const mapSel = '#map .table .table__section div:not(:first-child)'
+    const mapSel = '#map .table .table__section div'
     const tabSel = '#map .tab .tab__wrapper .tab__item'
     const items = await page.$$(mapSel)
     const tabs = await page.$$(tabSel)
 
     for await (const [index, item] of items.entries()) {
+      if (index === 0) continue
       const regionName = await item.$eval('dt', el => el.textContent)
       const link = await item.$eval('a', el => el.getAttribute('href'))
       const keyValue = link?.replace(`${url}/covid19`, '')
