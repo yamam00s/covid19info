@@ -7,7 +7,7 @@ export type Hazard = {
   nowInfection: number
   todayInfection: number
   totalInfection: number
-  comparisonInfection: number
+  comparisonYesterday: number
   updateAt: firestore.Timestamp | null;
   createdAt: firestore.Timestamp | null;
 }
@@ -19,7 +19,7 @@ export const blankHazard: Hazard = {
   nowInfection: 0,
   todayInfection: 0,
   totalInfection: 0,
-  comparisonInfection: 0,
+  comparisonYesterday: 0,
   updateAt: null,
   createdAt: null
 }

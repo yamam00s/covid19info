@@ -49,6 +49,7 @@ const feedHazard = async () => {
 
         if (!value) continue
         const valueNumber = parseInt(value.replace(/,/g, ''), 10) || 0
+
         hazardData[infections[i]] = valueNumber
       }
 

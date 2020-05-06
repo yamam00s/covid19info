@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+import { firestore } from 'firebase/app';
 import { collectionName } from '../services/constants';
 import { Hazard } from '../services/models/hazard';
 
@@ -7,21 +8,33 @@ const saveHazard = async (
   hazards: Hazard[],
 ) => {
   const hazardRef = await db.collection(collectionName.hazard)
+  let hazardData!: Hazard
 
   for await (const hazard of hazards) {
-    const hazardDoc = await hazardRef.doc(hazard.key).get()
+    const { key, todayInfection } = hazard
+    const hazardDoc = await hazardRef.doc(key).get()
+    const serverTimestamp = admin.firestore.FieldValue.serverTimestamp() as firestore.Timestamp
+
     if (hazardDoc.exists) {
-      hazardDoc.ref.set({
+      const existingData = hazardDoc.data() as Hazard
+      const {
+        todayInfection: yesterdayInfection, createdAt
+      } = existingData
+
+      hazardData = {
         ...hazard,
-        updateAt: admin.firestore.FieldValue.serverTimestamp()
-      })
+        comparisonYesterday: todayInfection - yesterdayInfection,
+        createdAt,
+        updateAt: serverTimestamp
+      }
     } else {
-      hazardDoc.ref.set({
+      hazardData = {
         ...hazard,
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
-        updateAt: admin.firestore.FieldValue.serverTimestamp()
-      })
+        createdAt: serverTimestamp
+      }
     }
+
+    hazardDoc.ref.set(hazardData)
   }
 }
 
