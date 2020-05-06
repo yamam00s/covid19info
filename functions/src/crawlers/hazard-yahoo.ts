@@ -1,6 +1,5 @@
 // import { chromium, errors } from 'playwright'
 import puppeteer, { errors } from 'puppeteer';
-
 import { Hazard, blankHazard } from '../services/models/hazard'
 
 const feedHazard = async () => {
@@ -32,10 +31,10 @@ const feedHazard = async () => {
       const regionName = await item.$eval('dt', el => el.textContent)
       const link = await item.$eval('a', el => el.getAttribute('href'))
       const keyValue = link?.replace(`${url}/covid19`, '')
-      let hazard!: Hazard
+      let hazardData!: Hazard
 
       if (!(regionName && keyValue)) continue
-      hazard = {
+      hazardData = {
         ...blankHazard,
         id: index,
         key: keyValue,
@@ -50,10 +49,10 @@ const feedHazard = async () => {
 
         if (!value) continue
         const valueNumber = parseInt(value.replace(/,/g, ''), 10) || 0
-        hazard[infections[i]] = valueNumber
+        hazardData[infections[i]] = valueNumber
       }
 
-      feedData.push(hazard)
+      feedData.push(hazardData)
     }
 
     await browser.close()
