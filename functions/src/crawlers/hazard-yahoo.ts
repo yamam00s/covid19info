@@ -4,53 +4,66 @@ import puppeteer, { errors } from 'puppeteer';
 import { Hazard, blankHazard } from '../services/models/hazard'
 
 const feedHazard = async () => {
-  const browser = await puppeteer.launch({
-    args: [
-      '--disable-gpu',
-      '--disable-dev-shm-usage',
-      '--disable-setuid-sandbox',
-      '--no-first-run',
-      '--no-sandbox',
-      '--no-zygote',
-      '--single-process'
-    ],
-    headless: true
-  })
-  // const context = await browser.newContext()
-  const page = await browser.newPage()
-  const url: string = 'https://hazard.yahoo.co.jp/article'
-  await page.goto(`${url}/20200207`)
-  const mapSel = '#map .table .table__section div'
-  const items = await page.$$(mapSel)
   let feedData: Hazard[] = []
 
-  for await (const [index, item] of items.entries()) {
-    try {
-      if (index === 0) continue
+  try {
+    const browser = await puppeteer.launch({
+      args: [
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--no-first-run',
+        '--no-sandbox',
+        '--no-zygote',
+        '--single-process'
+      ],
+      headless: true
+    })
+    // const context = await browser.newContext()
+    const page = await browser.newPage()
+    const url: string = 'https://hazard.yahoo.co.jp/article'
+    await page.goto(`${url}/20200207`)
+    const mapSel = '#map .table .table__section div:not(:first-child)'
+    const tabSel = '#map .tab .tab__wrapper .tab__item'
+    const items = await page.$$(mapSel)
+    const tabs = await page.$$(tabSel)
+
+    for await (const [index, item] of items.entries()) {
       const regionName = await item.$eval('dt', el => el.textContent)
-      const todayValue = await item.$eval('dd', el => el.textContent)
       const link = await item.$eval('a', el => el.getAttribute('href'))
       const keyValue = link?.replace(`${url}/covid19`, '')
-      if (regionName && todayValue && keyValue) {
-        const todayNumber = parseInt(todayValue, 10) || 0
-        feedData.push({
-          ...blankHazard,
-          id: index,
-          key: keyValue,
-          region: regionName,
-          todayInfection: todayNumber
-        })
+      let hazard!: Hazard
+
+      if (!(regionName && keyValue)) continue
+      hazard = {
+        ...blankHazard,
+        id: index,
+        key: keyValue,
+        region: regionName
       }
-    } catch (e) {
-        if (e instanceof errors.TimeoutError) {
-          console.log('timeout error')
-        } else {
-          console.log(e)
-        }
+
+      // タブで現在（初期）、新規、累計を切り替えていく
+      for await (const [i, tab] of tabs.entries()) {
+        const infections = ['nowInfection', 'todayInfection', 'totalInfection'] as const
+        await tab.click()
+        const value = await item.$eval('dd', el => el.textContent)
+
+        if (!value) continue
+        const valueNumber = parseInt(value.replace(/,/g, ''), 10) || 0
+        hazard[infections[i]] = valueNumber
+      }
+
+      feedData.push(hazard)
+    }
+
+    await browser.close()
+  } catch (e) {
+    if (e instanceof errors.TimeoutError) {
+      console.log('timeout error')
+    } else {
+      console.log(e)
     }
   }
-
-  await browser.close()
 
   return feedData
 }
