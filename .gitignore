@@ -30,3 +30,6 @@ yarn-error.log*
 .env.production.local
 
 .memo
+
+# web app's Firebase configuration
+firebaseConfig.ts
