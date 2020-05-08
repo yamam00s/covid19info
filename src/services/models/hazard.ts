@@ -8,8 +8,18 @@ export type Hazard = {
   todayInfection: number
   totalInfection: number
   comparisonYesterday: number
-  updateAt: firestore.Timestamp | null;
-  createdAt: firestore.Timestamp | null;
+  updateAt: firestore.Timestamp | null
+  createdAt: firestore.Timestamp | null
+}
+
+export interface HazardWeaken extends Hazard {
+  updateAt: any
+  createdAt: any
+}
+
+export interface ClientHazard extends HazardWeaken {
+  updateAt: string
+  createdAt: string
 }
 
 export const blankHazard: Hazard = {
