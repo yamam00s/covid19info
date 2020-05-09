@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import firebase from 'firebase/app';
-import { Hazard } from 'services/models/hazard';
+import { ClientHazard } from 'services/models/hazard';
 
 type FirebaseContextValue = {
   db: firebase.firestore.Firestore | null
@@ -11,9 +11,11 @@ export const FirebaseContext = createContext<FirebaseContextValue>({
 })
 
 type HazardContextValue = {
-  hazards: Hazard[]
+  hazards: ClientHazard[]
+  setHazards: (hazards: ClientHazard[]) => void
 }
 
 export const HazardContext = createContext<HazardContextValue>({
-  hazards: []
+  hazards: [],
+  setHazards: () => undefined
 })
