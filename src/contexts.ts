@@ -12,7 +12,7 @@ export const FirebaseContext = createContext<FirebaseContextValue>({
 
 type HazardContextValue = {
   hazards: ClientHazard[]
-  setHazards: (hazards: ClientHazard[]) => void
+  setHazards: React.Dispatch<React.SetStateAction<ClientHazard[]>>
 }
 
 export const HazardContext = createContext<HazardContextValue>({
