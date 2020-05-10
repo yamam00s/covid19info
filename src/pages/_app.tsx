@@ -4,6 +4,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore';
 import 'styles/global.css'
 import firebaseConfig from 'firebaseConfig'
+import Layout from 'components/Layout'
 import { FirebaseContext, HazardContext } from 'contexts'
 // import { ClientHazard } from 'services/models/hazard';
 
@@ -17,7 +18,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <FirebaseContext.Provider value={{ db }}>
       {/* <HazardContext.Provider value={{ hazards, setHazards }}> */}
+      <Layout>
         <Component {...pageProps} />
+      </Layout>
       {/* </HazardContext.Provider> */}
     </FirebaseContext.Provider>
   )
