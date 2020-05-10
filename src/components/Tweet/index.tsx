@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-const TweetMain: FC<{ userName : string }>= ({ userName }) => (
+const TweetMain: FC<{ userName: string }>= ({ userName }) => (
   <div>
     <a
       className="twitter-timeline"
