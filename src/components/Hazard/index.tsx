@@ -17,19 +17,24 @@ const useStyles = makeStyles({
 
 const HazardMain: FC<{ hazard: ClientHazard }>= ({ hazard }) => {
   const classes = useStyles();
+  const { region, todayInfection, comparisonYesterday, totalInfection } = hazard
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {hazard.region}
+          {region}
         </Typography>
         <Typography variant="body2" component="p">
-          本日の感染者: {hazard.todayInfection}
+          本日の感染者: {todayInfection}
           <br />
-          前日比: {hazard.comparisonYesterday}
+          前日比: {
+            Math.sign(comparisonYesterday) === 1
+              ? `+${comparisonYesterday}`
+              : comparisonYesterday
+          }
           <br />
-          合計: {hazard.totalInfection}
+          合計: {totalInfection}
         </Typography>
       </CardContent>
     </Card>
