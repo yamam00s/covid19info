@@ -9,12 +9,9 @@ import { ClientHazard } from 'services/models/hazard'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    formWrap: {
-      textAlign: "right"
-    },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 220,
+      minWidth: 320,
     }
   }),
 )
@@ -35,26 +32,24 @@ const SelectForm: FC<{ selectFormProps: SelectFormProps}> = ({
   const { hazards, value, handleChange } = selectFormProps
 
   return (
-    <div className={classes.formWrap}>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">
-          {value}
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={value}
-          onChange={handleChange}
-        >
-          {hazards.map(hazard => (
-            <MenuItem value={hazard.key}>
-              {hazard.region}
-            </MenuItem>
-          ))}
-        </Select>
-        <FormHelperText>Select Region</FormHelperText>
-      </FormControl>
-    </div>
+    <FormControl className={classes.formControl}>
+      <InputLabel id="demo-simple-select-label">
+        {value}
+      </InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={value}
+        onChange={handleChange}
+      >
+        {hazards.map(hazard => (
+          <MenuItem value={hazard.key}>
+            {hazard.region}
+          </MenuItem>
+        ))}
+      </Select>
+      <FormHelperText>Select Region</FormHelperText>
+    </FormControl>
   )
 }
 
