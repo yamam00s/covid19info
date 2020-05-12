@@ -11,27 +11,33 @@ import HazardMain from 'components/Hazard'
 import { ClientHazard, Hazard } from 'services/models/hazard'
 import { collectionName } from 'services/constants'
 
-const Home: FC<{ hazardData: ClientHazard[] }>= ({ hazardData }) => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Home: FC<{ hazardData: ClientHazard[] }>= ({ hazardData }) => {
+  const ranking = hazardData.sort((a, b) => b.totalInfection - a.totalInfection)
+  const top5 = ranking.slice(0, 5)
 
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={9}>
-          <HazardContainer hazards={hazardData} />
-          <HazardMain hazard={hazardData[40]} />
-          <HazardMain hazard={hazardData[45]} />
+  return (
+    <div>
+      <Head>
+        <title>Home</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={9}>
+            <HazardContainer hazards={hazardData} />
+            {top5.map(hazard => (
+              <HazardMain hazard={hazard} />
+            ))}
+          </Grid>
+          <Grid item xs={3}>
+            <TweetContainer />
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <TweetContainer />
-        </Grid>
-      </Grid>
-    </Container>
-  </div>
-)
+      </Container>
+    </div>
+  )
+}
 
 export async function getStaticProps() {
   !firebase.apps.length
