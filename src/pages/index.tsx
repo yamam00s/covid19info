@@ -27,7 +27,7 @@ const Home: FC<{ hazardData: ClientHazard[] }>= ({ hazardData }) => {
           <Grid item xs={9}>
             <HazardContainer hazards={hazardData} />
             {top5.map(hazard => (
-              <HazardMain hazard={hazard} />
+              <HazardMain key={hazard.id} hazard={hazard} />
             ))}
           </Grid>
           <Grid item xs={3}>

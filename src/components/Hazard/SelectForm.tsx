@@ -43,7 +43,7 @@ const SelectForm: FC<{ selectFormProps: SelectFormProps}> = ({
         onChange={handleChange}
       >
         {hazards.map(hazard => (
-          <MenuItem value={hazard.key}>
+          <MenuItem key={hazard.id} value={hazard.key}>
             {hazard.region}
           </MenuItem>
         ))}
