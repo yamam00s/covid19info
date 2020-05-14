@@ -34,3 +34,4 @@ yarn-error.log*
 # web app's Firebase configuration
 firebaseConfig.ts
 .vercel
+functions
