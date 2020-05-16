@@ -22,11 +22,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-// App.getInitialProps = async () => {
-// return {
-//   pageProps: {
-//   }
-// }
-// }
-
 export default App
