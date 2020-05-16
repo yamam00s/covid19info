@@ -6,22 +6,18 @@ import 'styles/global.css'
 import firebaseConfig from 'firebaseConfig'
 import Layout from 'components/Layout'
 import { FirebaseContext, HazardContext } from 'contexts'
-// import { ClientHazard } from 'services/models/hazard'
 
 const App = ({ Component, pageProps }: AppProps) => {
   !firebase.apps.length
     ? firebase.initializeApp(firebaseConfig)
     : firebase.app()
   const db =  firebase.firestore()
-  // const [hazards, setHazards] = useState<ClientHazard[]>([])
 
   return (
     <FirebaseContext.Provider value={{ db }}>
-      {/* <HazardContext.Provider value={{ hazards, setHazards }}> */}
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      {/* </HazardContext.Provider> */}
     </FirebaseContext.Provider>
   )
 }

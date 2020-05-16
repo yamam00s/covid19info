@@ -20,7 +20,7 @@ type SelectFormProps = {
   hazards: ClientHazard[]
   value: string
   handleChange: (event: React.ChangeEvent<{
-    value: string;
+    value: string
   }>) => void
 }
 

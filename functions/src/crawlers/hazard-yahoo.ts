@@ -1,5 +1,5 @@
 // import { chromium, errors } from 'playwright'
-import puppeteer, { errors } from 'puppeteer';
+import puppeteer, { errors } from 'puppeteer'
 import { Hazard, blankHazard } from '../services/models/hazard'
 
 const feedHazard = async () => {
@@ -18,6 +18,7 @@ const feedHazard = async () => {
       ],
       headless: true
     })
+    // playwrightが Cloud Functionsで動かなかったので
     // const context = await browser.newContext()
     const page = await browser.newPage()
     const url: string = 'https://hazard.yahoo.co.jp/article'

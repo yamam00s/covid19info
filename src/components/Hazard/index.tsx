@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 import { ClientHazard } from 'services/models/hazard'
 
 const useStyles = makeStyles({
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 })
 
 const HazardMain: FC<{ hazard: ClientHazard }>= ({ hazard }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const { region, todayInfection, comparisonYesterday, totalInfection } = hazard
 
   return (

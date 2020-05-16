@@ -1,7 +1,7 @@
-import admin from 'firebase-admin';
-import { firestore } from 'firebase/app';
-import { collectionName } from '../services/constants';
-import { Hazard } from '../services/models/hazard';
+import admin from 'firebase-admin'
+import { firestore } from 'firebase/app'
+import { collectionName } from '../services/constants'
+import { Hazard } from '../services/models/hazard'
 
 const saveHazard = async (
   db: admin.firestore.Firestore,

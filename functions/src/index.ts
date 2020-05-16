@@ -1,9 +1,9 @@
-import * as functions from 'firebase-functions';
-import admin from 'firebase-admin';
+import * as functions from 'firebase-functions'
+import admin from 'firebase-admin'
 import feedHazard from './crawlers/hazard-yahoo'
 import saveHazard from './models/hazard'
 
-admin.initializeApp();
+admin.initializeApp()
 
 export const fetchHazard = functions
   .region('asia-northeast1')
@@ -16,7 +16,7 @@ export const fetchHazard = functions
   .onRun(async () => {
     const db = admin.firestore()
     const feedData = await feedHazard()
-    if (!feedData.length) throw new Error('feed error');
+    if (!feedData.length) throw new Error('feed error')
     await saveHazard(db, feedData)
   })
 
@@ -26,7 +26,7 @@ export const fetchHazard = functions
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
 //   databaseURL: "https://covid19info-574cd.firebaseio.com"
-// });
+// })
 
 // const localTest = async () => {
 //   const db = admin.firestore()

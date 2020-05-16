@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Layout: FC = ({ children }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
@@ -41,4 +41,4 @@ const Layout: FC = ({ children }) => {
   )
 }
 
-export default Layout;
+export default Layout
