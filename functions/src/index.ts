@@ -1,7 +1,9 @@
 import * as functions from 'firebase-functions'
 import admin from 'firebase-admin'
+import fetch from 'node-fetch'
 import feedHazard from './crawlers/hazard-yahoo'
 import saveHazard from './models/hazard'
+import { deployHooksUrl } from './deploy-hooks'
 
 admin.initializeApp()
 
@@ -18,6 +20,7 @@ export const fetchHazard = functions
     const feedData = await feedHazard()
     if (!feedData.length) throw new Error('feed error')
     await saveHazard(db, feedData)
+    await fetch(deployHooksUrl)
   })
 
 // local node.js環境での実行用
