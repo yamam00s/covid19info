@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { ClientHazard } from 'services/models/hazard';
+import { ClientHazard } from 'services/models/hazard'
 import HazardMain from 'components/Hazard'
 import SelectForm from 'components/Hazard/SelectForm'
 

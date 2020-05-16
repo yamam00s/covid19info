@@ -1,6 +1,6 @@
-import { createContext } from 'react';
-import firebase from 'firebase/app';
-import { ClientHazard } from 'services/models/hazard';
+import { createContext } from 'react'
+import firebase from 'firebase/app'
+import { ClientHazard } from 'services/models/hazard'
 
 type FirebaseContextValue = {
   db: firebase.firestore.Firestore | null
